@@ -69,7 +69,33 @@ namespace Blazui.Component.NavMenu
             BackgroundColor = Options.BackgroundColor;
             textColor = Options.TextColor;
 
-            if (Options.DefaultActiveIndex == Index)
+            Func<string, bool> matchFunc = TopMenu.Match;
+            if (matchFunc == null)
+            {
+                matchFunc = route =>
+                {
+                    if (string.IsNullOrWhiteSpace(Route))
+                    {
+                        return false;
+                    }
+                    var uri = new Uri(NavigationManager.Uri);
+                    var paths = uri.LocalPath.Split('/').Where(x => !string.IsNullOrWhiteSpace(x)).ToArray();
+                    var menuPaths = route.Split('/').Where(x => !string.IsNullOrWhiteSpace(x)).ToArray();
+                    if (paths.Length != menuPaths.Length)
+                    {
+                        return false;
+                    }
+                    for (int i = 0; i < paths.Length; i++)
+                    {
+                        if (paths[i].ToUpper() != menuPaths[i].ToUpper())
+                        {
+                            return false;
+                        }
+                    }
+                    return true;
+                };
+            }
+            if (Options.DefaultActiveIndex == Index || matchFunc(Route))
             {
                 TopMenu.ActivateItem(this);
             }

@@ -9,6 +9,7 @@ namespace Blazui.Component.Button
 {
     public class BButtonBase : BComponentBase
     {
+        internal HtmlPropertyBuilder cssClassBuilder;
         protected async Task OnButtonClickedAsync(MouseEventArgs e)
         {
             if (IsDisabled)
@@ -24,6 +25,11 @@ namespace Blazui.Component.Button
         [Parameter]
         public string Cls { get; set; }
 
+        /// <summary>
+        /// 是否将自定义的 CSS 类加入到已有 CSS 类，如果为 false，则替换掉默认 CSS 类，默认为 true
+        /// </summary>
+        [Parameter]
+        public bool AppendCustomCls { get; set; } = true;
         [Parameter]
         public EventCallback<MouseEventArgs> OnClick { get; set; }
 
@@ -57,6 +63,38 @@ namespace Blazui.Component.Button
         protected override bool ShouldRender()
         {
             return true;
+        }
+
+        protected override void OnParametersSet()
+        {
+            base.OnParametersSet();
+            if (IsLoading)
+            {
+                IsDisabled = true;
+            }
+            cssClassBuilder = HtmlPropertyBuilder.CreateCssClassBuilder();
+            if (string.IsNullOrWhiteSpace(Cls) || AppendCustomCls)
+            {
+                cssClassBuilder.Add($"el-button", $"el-button--{Type.ToString().ToLower()}", Cls)
+                .AddIf(Size != ButtonSize.Default, $"el-button--{Size.ToString().ToLower()}")
+                .AddIf(IsPlain, "is-plain")
+                .AddIf(IsRound, "is-round")
+                .AddIf(IsDisabled, "is-disabled")
+                .AddIf(IsLoading, "is-loading")
+                .AddIf(IsCircle, "is-circle");
+                return;
+            }
+            cssClassBuilder.AddIf(!string.IsNullOrWhiteSpace(Cls), Cls);
+            if (string.IsNullOrWhiteSpace(Cls))
+            {
+                cssClassBuilder.Add($"el-button", $"el-button--{Type.ToString().ToLower()}")
+                    .AddIf(Size != ButtonSize.Default, $"el-button--{Size.ToString().ToLower()}")
+                    .AddIf(IsPlain, "is-plain")
+                    .AddIf(IsRound, "is-round")
+                    .AddIf(IsDisabled, "is-disabled")
+                    .AddIf(IsLoading, "is-loading")
+                    .AddIf(IsCircle, "is-circle");
+            }
         }
     }
 }

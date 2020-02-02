@@ -12,6 +12,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Demo\MarkdownEditor\TestController.cs" />
+    <Compile Remove="Demo\Upload\TestController.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Include="Demo\BasicButton\BasicButton.razor" />
     <None Include="Demo\BasicInput\BasicInput.razor" />
     <None Include="Demo\BasicRadio\BasicRadio.razor" />
@@ -31,22 +36,25 @@
     <None Include="Demo\ItemDisabledSelect.razor" />
     <None Include="Demo\LeftTab.razor" />
     <None Include="Demo\LoadingButton.razor" />
+    <None Include="Demo\MarkdownEditor\TestController.cs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="Demo\RadioButton\RadioButton.razor" />
     <None Include="Demo\RadioGroup\RadioGroup.razor" />
     <None Include="Demo\TextButton.razor" />
     <None Include="Demo\TextSwitch.razor" />
+    <None Include="Demo\Upload\TestController.cs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="Pages\Error.razor" />
     <None Include="Pages\_Host.cshtml" />
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Blazui.Markdown" Version="0.0.1" />
     <PackageReference Include="Microsoft.AspNetCore.Hosting" Version="2.2.7" />
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.9.5" />
     <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\Blazui.Component\Blazui.Component.csproj" />
   </ItemGroup>
 
   <ItemGroup>
@@ -86,6 +94,9 @@
     <Compile Update="Demo\EditableTab\BindingEditableTabBase.cs">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Compile>
+    <Compile Update="Demo\Form\Activity.cs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Compile>
     <Compile Update="Demo\Form\AutoGenerateFieldsInitilizeFormBase.cs">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Compile>
@@ -98,6 +109,12 @@
     <Compile Update="Demo\Form\InlineFormBase.cs">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Compile>
+    <Compile Update="Demo\Loading\MenuLoadingBase.cs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Compile>
+    <Compile Update="Demo\Loading\CardLoadingBase.cs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Compile>
     <Compile Update="Demo\Loading\ManualLoadingBase.cs">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Compile>
@@ -108,6 +125,12 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Compile>
     <Compile Update="Demo\Loading\ServiceLoadingBase.cs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Compile>
+    <Compile Update="Demo\MarkdownEditor\ArticleModel.cs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Compile>
+    <Compile Update="Demo\MarkdownEditor\FormMarkdownBase.cs">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Compile>
     <Compile Update="Demo\MessageBox\ConfirmMessageBoxBase.cs">
@@ -140,16 +163,28 @@
     <Compile Update="Demo\Table\BasicTableBase.cs">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Compile>
+    <Compile Update="Demo\Table\SearchCondition.cs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Compile>
     <Compile Update="Demo\Table\SearchTableBase.cs">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Compile>
     <Compile Update="Demo\Table\TestData.cs">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Compile>
+    <Compile Update="Demo\Upload\UploadActivity.cs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Compile>
+    <Compile Update="Demo\Upload\UploadFormBase.cs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Compile>
   </ItemGroup>
 
   <ItemGroup>
     <Content Update="Demo\BasicButton\BasicButton.razor">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Update="Demo\BasicInput\SizeInput.razor">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Update="Demo\BasicInput\BasicInput.razor">
@@ -173,13 +208,34 @@
     <Content Update="Demo\Dialog\TestContent.razor">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Update="Demo\DropDown\BasicDropDown.razor">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Update="Demo\EditableTab\BindingEditableTab.razor">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Update="Demo\Form\AutoGenerateFieldsInitilizeForm.razor">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Update="Demo\Form\HiddenFormItem.razor">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Update="Demo\Form\InitilizeForm.razor">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Update="Demo\Loading\MenuLoading.razor">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Update="Demo\Loading\CardLoading.razor">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Update="Demo\MarkdownEditor\Markdown.razor">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Update="Demo\MarkdownEditor\FormMarkdown.razor">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Update="Demo\MarkdownEditor\BasicEditor.razor">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Update="Demo\Menu\CustomBackgroundMenu.razor">
@@ -354,6 +410,12 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Update="Demo\Upload\BUploadLimit.razor">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Update="Demo\Upload\ImageUpload.razor">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Update="Demo\Upload\UploadForm.razor">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Update="wwwroot\css\site.css">
